@@ -34,11 +34,3 @@ Users should be able to:
 ![](https://github.com/GragertVD/age-calculator-app-main/blob/master/screenshot.JPG)
 
 
-### Links
-
-- Live Site URL: [https://age-calculator-app-main--gragert.vercel.app/](https://age-calculator-app-main--gragert.vercel.app/)
-
-## Author
-
-- telegram - [gragert_vd](https://t.me/gragert_vd)
-
