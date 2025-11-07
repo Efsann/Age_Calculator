@@ -1,22 +1,14 @@
-
 document.addEventListener("DOMContentLoaded", () => {
-  //We get links to the elements with which we will work.
-  //3 input fields and a button
   const inputDay = document.querySelector('.input-days');
   const inputMonth = document.querySelector('.input-months');
   const inputYear = document.querySelector('.input-years');
-
   const button = document.querySelector('.calculator__user-input-btn');
-
-  //Add an input event handler to the day input field
   inputDay.addEventListener('input', function () {
-    //If there were errors in the field, then with a new change we remove them
     if (inputDay.nextElementSibling.innerHTML == "Must be a valid date") {
       inputDay.parentElement.classList.remove("error");
       inputMonth.parentElement.classList.remove("error");
       inputYear.parentElement.classList.remove("error");
     }
-    //If a day greater than 31 is specified, then we signal an error, otherwise we delete the error
     if (inputDay.value > 31) {
       inputDay.nextElementSibling.innerHTML = "Must be a valid day"
       inputDay.parentElement.classList.add("error");
@@ -24,16 +16,12 @@ document.addEventListener("DOMContentLoaded", () => {
       inputDay.parentElement.classList.remove("error");
     }
   });
-
-  //Add an input event handler to the mounth input field
   inputMonth.addEventListener('input', function () {
-    //If there were errors in the field, then with a new change we remove them
     if (inputDay.nextElementSibling.innerHTML == "Must be a valid date") {
       inputDay.parentElement.classList.remove("error");
       inputMonth.parentElement.classList.remove("error");
       inputYear.parentElement.classList.remove("error");
     }
-    //If a mounth greater than 12 is specified, then we signal an error, otherwise we delete the error
     if (inputMonth.value > 12) {
       inputMonth.nextElementSibling.innerHTML = "Must be a valid mounth"
       inputMonth.parentElement.classList.add("error");
@@ -42,16 +30,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
   });
-
-  //Add an input event handler to the year input field
   inputYear.addEventListener('input', function () {
-    //If there were errors in the field, then with a new change we remove them
     if (inputDay.nextElementSibling.innerHTML == "Must be a valid date") {
       inputDay.parentElement.classList.remove("error");
       inputMonth.parentElement.classList.remove("error");
       inputYear.parentElement.classList.remove("error");
     }
-    //If the specified year is greater than the current year, we throw an error
     let Data = new Date();
     if (inputYear.value > Data.getFullYear()) {
       inputYear.nextElementSibling.innerHTML = "Must be in the past"
@@ -60,7 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
       inputYear.parentElement.classList.remove("error");
     }
   });
-  //Here just made it so that when given a negative year. The current year was taken minus the given one
   inputYear.addEventListener('change', function () {
     let Data = new Date();
     if (inputYear.value < 0) {
@@ -68,16 +51,10 @@ document.addEventListener("DOMContentLoaded", () => {
       inputYear.value = Data.getFullYear() - inputYear.value;
     }
   });
-
-  //Handling the button click event
   button.addEventListener('click', function () {
-
-    //Retrieving data from fields
     day = inputDay.value;
     month = inputMonth.value;
     year = inputYear.value;
-
-    //Checking that the fields are filled
     if (!day) {
       inputDay.parentElement.classList.add("error");
       inputDay.nextElementSibling.innerHTML = "This field is required"
@@ -93,7 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!day || !month || !year) {
       return;
     }
-
     let date = new Date(year, month - 1, day);
     let currentData = new Date();
 //Checking if the date is correct
@@ -133,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    //We display the calculated data in the result fields
+    
     const outputDay = document.querySelector('.output-days').querySelector('span');
     const outputMonth = document.querySelector('.output-months').querySelector('span');
     const outputYear = document.querySelector('.output-years').querySelector('span');
@@ -144,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   });
 
-  //Animated value output function, the output speed of values is calculated based on the magnitude of the value
+  
   function OutputNumber(el, num) {
     let step = 50;
     num > 25 && (step = 35);
